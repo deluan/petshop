@@ -1,7 +1,6 @@
-%p#notice= notice
 .page-header
   %h1
-    Detalle de cliente
+    Client detail
     %small (Internal ID: #{@client.id})
 %dl.dl-horizontal
   %dt #ID
@@ -15,6 +14,14 @@
   %dt Home Address
   %dd
     %address= simple_format @client.home_address
+  %dt Pets
+  %dd
+    %ul.unstyled
+      - @client.pets.each do |pet|
+        %li
+          = pet.name
+          %span.muted - #{age_to_string(pet.age)}
+          %span.label= pet.pet_type
 = link_to 'Edit', edit_client_path(@client)
 \|
 = link_to 'Back', clients_path

@@ -9,6 +9,12 @@
   = f.input :phone_number
   = f.input :email
   = f.input :home_address, :as => :text, :input_html => { :rows => 3 }
+  %h4 Pets
+  = f.simple_fields_for :pets do |pf|
+    %fieldset.fieldset
+      = pf.input :name
+      = pf.input :age, :label => "Age (months)", :input_html => { :class => "input-small"}
+      = pf.input :pet_type, :collection => [:dog, :cat, :bird, :other], :input_html => { :class => "input-small"}
   .form-actions
     = link_to 'Cancel', clients_path, :class => :btn
     = f.submit "Save", :class => "btn btn-primary"

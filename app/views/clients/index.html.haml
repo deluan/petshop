@@ -11,6 +11,7 @@
   %tr
     %th #ID
     %th Name
+    %th Number of pets
     %th Phone Number
     %th Email
     %th Home Address
@@ -20,6 +21,7 @@
     %tr
       %td= client.id
       %td= client.name
+      %td= client.pets.count
       %td= client.phone_number
       %td= client.email
       %td= client.home_address

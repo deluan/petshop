@@ -17,6 +17,8 @@
         .container
           = link_to "Petshop", root_url, :class => :brand
     .container
+      - if flash[:notice].present?
+        %p#notice.alert.alert-success= notice
       .content
         .span12
           .row

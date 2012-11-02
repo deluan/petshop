@@ -17,7 +17,7 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @client }
+      format.json { render json: @client, :include => :pets }
     end
   end
 
@@ -25,7 +25,7 @@ class ClientsController < ApplicationController
   # GET /clients/new.json
   def new
     @client = Client.new
-
+    set_pets
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @client }
@@ -35,6 +35,7 @@ class ClientsController < ApplicationController
   # GET /clients/1/edit
   def edit
     @client = Client.find(params[:id])
+    set_pets
   end
 
   # POST /clients
@@ -47,6 +48,7 @@ class ClientsController < ApplicationController
         format.html { redirect_to @client, notice: 'Client was successfully created.' }
         format.json { render json: @client, status: :created, location: @client }
       else
+        set_pets
         format.html { render action: "new" }
         format.json { render json: @client.errors, status: :unprocessable_entity }
       end
@@ -63,6 +65,7 @@ class ClientsController < ApplicationController
         format.html { redirect_to @client, notice: 'Client was successfully updated.' }
         format.json { head :no_content }
       else
+        set_pets
         format.html { render action: "edit" }
         format.json { render json: @client.errors, status: :unprocessable_entity }
       end
@@ -76,8 +79,15 @@ class ClientsController < ApplicationController
     @client.destroy
 
     respond_to do |format|
-      format.html { redirect_to clients_url }
+      format.html { redirect_to clients_url, notice: 'Client was successfully deleted.' }
       format.json { head :no_content }
+    end
+  end
+
+  private
+  def set_pets
+    (Client::MAX_PET_COUNT - @client.pets.length).times do |i|
+      @client.pets.build
     end
   end
 end
