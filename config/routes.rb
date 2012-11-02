@@ -1,3 +1,6 @@
 Petshop::Application.routes.draw do
-  root :to => "application#home"
+
+  resources :clients
+
+  root :to => "clients#index"
 end

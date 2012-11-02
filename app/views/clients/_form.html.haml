@@ -1,0 +1,15 @@
+= simple_form_for @client, :html => {:class => 'form-horizontal' } do |f|
+  - if @client.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@client.errors.count, "error")} prohibited this client from being saved:"
+      %ul
+        - @client.errors.full_messages.each do |msg|
+          %li= msg
+  = f.input :name
+  = f.input :phone_number
+  = f.input :email
+  = f.input :home_address, :as => :text, :input_html => { :rows => 3 }
+  .form-actions
+    = link_to 'Cancel', clients_path, :class => :btn
+    = f.submit "Save", :class => "btn btn-primary"
+

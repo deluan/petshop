@@ -1,0 +1,28 @@
+.page-header.clearfix
+  .pull-left
+    %h1 Listing clients
+  .pull-right
+    %br
+    = link_to new_client_path, :class => "btn btn-success" do
+      %i.icon-plus
+      Add new client
+%br
+%table.table.table-bordered.table-striped
+  %tr
+    %th #ID
+    %th Name
+    %th Phone Number
+    %th Email
+    %th Home Address
+    %th(colspan = 3)
+
+  - @clients.each do |client|
+    %tr
+      %td= client.id
+      %td= client.name
+      %td= client.phone_number
+      %td= client.email
+      %td= client.home_address
+      %td= link_to 'Show', client, :class => "btn btn-small"
+      %td= link_to 'Edit', edit_client_path(client), :class => "btn btn-small"
+      %td= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-small"

@@ -1,0 +1,20 @@
+%p#notice= notice
+.page-header
+  %h1
+    Detalle de cliente
+    %small (Internal ID: #{@client.id})
+%dl.dl-horizontal
+  %dt #ID
+  %dd= @client.id
+  %dt Name
+  %dd= @client.name
+  %dt Phone Number
+  %dd= @client.phone_number
+  %dt Email
+  %dd= @client.email
+  %dt Home Address
+  %dd
+    %address= simple_format @client.home_address
+= link_to 'Edit', edit_client_path(@client)
+\|
+= link_to 'Back', clients_path
