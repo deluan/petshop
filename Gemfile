@@ -8,7 +8,7 @@ gem 'rails', '3.2.6'
 gem 'mysql2'
 gem 'simple_form'
 gem 'haml-rails'
-
+gem 'auto-environment', git: 'git@github.com:deluan/auto-environments.git'
 
 # Gems used only for assets and not required
 # in production environments by default.

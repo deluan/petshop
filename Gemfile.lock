@@ -1,3 +1,9 @@
+GIT
+  remote: git@github.com:deluan/auto-environments.git
+  revision: d63dd0b527761262d48bcbc84d59d70d5d30e15e
+  specs:
+    auto-environment (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -117,6 +123,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  auto-environment!
   bootstrap-sass (~> 2.1.0.0)
   coffee-rails (~> 3.2.1)
   font-awesome-sass-rails
