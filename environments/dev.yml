@@ -1,0 +1,12 @@
+machines:
+  db:
+    - common
+    - mysql
+  www:
+    - common
+    - ruby19
+    - passenger
+    - nginx
+network:
+  domain: auto-environment.info
+  public_hosts: www
